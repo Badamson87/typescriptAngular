@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {APP_BASE_HREF} from '@angular/common';
 import { AppComponent } from './app.component';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
-// import {CommonModule} from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
     declarations: [
-    AppComponent
+    AppComponent,
+    HistoryComponent
   ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        AppRoutingModule,
+
         // CommonModule,
     ],
-    providers: [FormBuilder],
+    providers: [FormBuilder, {provide: APP_BASE_HREF, useValue: '/'}],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

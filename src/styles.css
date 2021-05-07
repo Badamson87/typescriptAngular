@@ -57,11 +57,11 @@ body {
     color: rgba(0, 0, 0, 0.4);
 }
 
-.todoapp input::input-placeholder {
-    font-style: italic;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.4);
-}
+/*.todoapp input::input-placeholder {*/
+/*    font-style: italic;*/
+/*    font-weight: 400;*/
+/*    color: rgba(0, 0, 0, 0.4);*/
+/*}*/
 
 .todoapp h1 {
     position: absolute;
