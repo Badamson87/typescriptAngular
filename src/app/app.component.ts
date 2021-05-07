@@ -8,8 +8,8 @@ import {FormBuilder, Validators} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  defaultTodo = {checked: false, title: ""}
-  todo: Todo = this.defaultTodo;
+  // defaultTodo = {checked: false, title: ""}
+  // todo: Todo = this.defaultTodo;
   todos: Todo[] = [{id: 0, checked: false, title: 'Test'}];
 
   public todoForm: any
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     console.log(this.todoForm.value);
     this.todos.push(this.todoForm.value);
     this.todoForm.reset();
-    this.todo = this.defaultTodo;
+    // this.todo = this.defaultTodo;
   }
 
 }

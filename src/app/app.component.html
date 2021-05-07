@@ -16,7 +16,8 @@
 					<div ng-class="{completed: todo.completed, editing: todo == editedTodo}">
 						<div class="view">
 							<input class="toggle" type="checkbox" ng-model="todo.completed">
-							<label>{{todo.title}}</label>
+<!--							<label>{{todo.title}}</label>-->
+							<input type="text" style="border: none" value="{{todo.title}}" />
 							<button class="destroy" ng-click="vm.removeTodo(todo)"></button>
 						</div>
 <!--						<form ng-submit="vm.doneEditing(todo)">-->
