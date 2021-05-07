@@ -1,7 +1,7 @@
 <section class="todoapp">
 			<header class="header">
 				<h1>todos</h1>
-				<form [formGroup]="todoForm" class="todo-form" (ngSubmit)="editTodo()">
+				<form [formGroup]="todoForm" class="todo-form" (ngSubmit)="addTodo()">
 <!--					<input class="new-todo" placeholder="What needs to be done?" name="todoTitle" [(ngModel)]="todo.title" autofocus>-->
 					<input class="new-todo" placeholder="What needs to be done?" formControlName="title" id="title" autofocus>
 				</form>
@@ -14,7 +14,7 @@
 						<div class="view">
 							<input class="toggle" type="checkbox" [(ngModel)]="todo.checked">
 <!--							<label>{{todo.title}}</label>-->
-							<input type="text" style="border: none" value="{{todo.title}}" />
+							<input type="text" style="border: none" [(ngModel)]="todo.title" />
 							<button class="destroy" ng-click="vm.removeTodo(todo)"></button>
 						</div>
 <!--						<form ng-submit="vm.doneEditing(todo)">-->

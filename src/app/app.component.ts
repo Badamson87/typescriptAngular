@@ -10,8 +10,6 @@ import {ActivatedRoute, Router} from "@angular/router";
   providers: []
 })
 export class AppComponent implements OnInit {
-  // defaultTodo = {checked: false, title: ""}
-  // todo: Todo = this.defaultTodo;
   todos: Todo[] = [{id: 0, checked: false, title: 'Test'}];
   public todoForm: any
 
@@ -24,10 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-  editTodo() {
-    console.log(this.todoForm.value);
+  addTodo() {
     this.todos.push(this.todoForm.value);
     this.todoForm.reset();
   }
@@ -63,6 +58,4 @@ export class AppComponent implements OnInit {
       if(todo.checked) this.todos.splice(index, 1);
     })
   }
-
-
 }
