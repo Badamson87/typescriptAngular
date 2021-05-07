@@ -24,9 +24,9 @@
 				</div>
 			</section>
 			<footer class="footer" ng-show="todos.length" ng-cloak>
-<!--				<span class="todo-count"><strong>{{remainingCount}}</strong>-->
+				<span class="todo-count"><strong>{{todos?.length}}</strong>
 <!--					<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>-->
-<!--				</span>-->
+				</span>
 				<ul class="filters">
 					<li>
 						<a ng-class="{selected: location.path() == '/'} " href="#/">All</a>
@@ -38,7 +38,7 @@
 						<a ng-class="{selected: location.path() == '/completed'}" href="#/completed">Completed</a>
 					</li>
 				</ul>
-				<button class="clear-completed" ng-click="vm.clearDoneTodos()" ng-show="doneCount">Clear completed</button>
+				<button class="clear-completed" (click)="clearCompleted()" ng-show="doneCount">Clear completed</button>
 			</footer>
 		</section>
 

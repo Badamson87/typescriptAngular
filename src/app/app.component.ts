@@ -35,17 +35,16 @@ export class AppComponent implements OnInit {
   todoFilter(): Todo[]{
     const temp: Todo[] = [];
       this?.activatedRouter?.fragment?.subscribe(params => {
-        console.log(params);
         switch (true) {
           case params.toString().includes('active'): {
             this.todos.forEach((todo) => {
-              if (!todo.checked) {temp.push(todo)}
+              if (!todo.checked) temp.push(todo);
             })
             break;
           }
           case params.toString().includes('completed'): {
             this.todos.forEach((todo) => {
-              if (todo.checked) {temp.push(todo)}
+              if (todo.checked) temp.push(todo);
             })
             break;
           }
@@ -58,5 +57,12 @@ export class AppComponent implements OnInit {
       })
         return temp;
   }
+
+  clearCompleted(){
+    this.todos.forEach((todo, index) => {
+      if(todo.checked) this.todos.splice(index, 1);
+    })
+  }
+
 
 }
