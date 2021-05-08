@@ -3,6 +3,7 @@ import {Todo} from "../interfaces/todo";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TodoService} from "../../server/services/todo.service";
+import {defer} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import {TodoService} from "../../server/services/todo.service";
 export class AppComponent implements OnInit {
   todos: Todo[] = [];
   public todoForm: any
+  public updateForm: any
 
   constructor(public formBuilder: FormBuilder, public router: Router, public activatedRouter: ActivatedRoute,
     private todoService: TodoService
@@ -28,6 +30,15 @@ export class AppComponent implements OnInit {
     }, (err: Error) => {
       console.log(err);
     });
+  }
+
+  saveTodo(todo: Todo){
+   this.todoService.update(todo)
+       .subscribe((result: any) => {
+         console.log('success on update')
+       },(err: Error) => {
+         console.log(err)
+       })
   }
 
   addTodo() {

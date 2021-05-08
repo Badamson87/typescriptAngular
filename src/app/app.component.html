@@ -12,9 +12,9 @@
 				<div *ngFor="let todo of todoFilter()" class="todo-list">
 					<div [className]="{completed: todo.checked}">
 						<div class="view">
-							<input class="toggle" type="checkbox" [(ngModel)]="todo.checked">
+							<input class="toggle" (blur)="saveTodo(todo)" type="checkbox" [(ngModel)]="todo.checked">
 <!--							<label>{{todo.title}}</label>-->
-							<input type="text" style="border: none" [(ngModel)]="todo.title" />
+							<input type="text" style="border: none" (blur)="saveTodo(todo)" [(ngModel)]="todo.title" />
 							<button class="destroy" ng-click="vm.removeTodo(todo)"></button>
 						</div>
 <!--						<form ng-submit="vm.doneEditing(todo)">-->

@@ -16,4 +16,9 @@ export class TodoService {
         return this.http.post('api/todo', todo);
     }
 
+    public update(todo: Todo) {
+        return this.http.put('api/todo', todo);
+    }
+
+
 }
