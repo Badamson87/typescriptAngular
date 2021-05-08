@@ -77,8 +77,20 @@ export class AppComponent implements OnInit {
   }
 
   clearCompleted(){
+    let temp: string = "";
     this.todos.forEach((todo, index) => {
-      if(todo.checked) this.todos.splice(index, 1);
+      if(todo.checked) {
+        temp += temp.length > 0 ? ',' + todo.id : todo.id;
+      }
     })
+    this.todoService.delete(temp)
+        .subscribe((results: any) => {
+          this.todos.forEach((todo, index) => {
+            if(todo.checked) this.todos.splice(index, 1);
+          })
+        }, (err: Error) => {
+          console.log(err);
+        })
   }
+
 }
