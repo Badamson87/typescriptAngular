@@ -21,7 +21,7 @@ export class TodoService {
     }
 
     public delete(todos: string){
-        return this.http.delete('api/todo/:todos', )
+        return this.http.delete('api/todo/' + todos, )
     }
 
 }
