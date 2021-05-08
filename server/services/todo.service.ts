@@ -13,7 +13,7 @@ export class TodoService {
     }
 
     public create(todo: Todo) {
-        return this.http.put('api/todo', todo);
+        return this.http.post('api/todo', todo);
     }
 
 }

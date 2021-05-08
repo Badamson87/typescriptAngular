@@ -31,8 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   addTodo() {
-    this.todos.push(this.todoForm.value);
-    this.todoForm.reset();
+    this.todoService.create(this.todoForm.value).subscribe((result) => {
+      this.todos.push(this.todoForm.value);
+      this.todoForm.reset();
+    }, (err: Error) => {
+      console.log(err);
+    });
   }
 
   todoFilter(): Todo[]{
