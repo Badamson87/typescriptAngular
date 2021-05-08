@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Todo} from "../interfaces/todo";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TodoService} from "../../server/services/todo.service";
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,20 @@ export class AppComponent implements OnInit {
   todos: Todo[] = [{id: 0, checked: false, title: 'Test'}];
   public todoForm: any
 
-  constructor(public formBuilder: FormBuilder, public router: Router, public activatedRouter: ActivatedRoute) {
+  constructor(public formBuilder: FormBuilder, public router: Router, public activatedRouter: ActivatedRoute,
+    private todoService: TodoService
+  ) {
     this.todoForm = this.formBuilder.group({
       'title': ['', [Validators.required,]]
     })
   }
 
   ngOnInit(): void {
+    this.todoService.getAll().subscribe((result) => {
+      return result;
+    }, (err: Error) => {
+      console.log(err);
+    });
   }
 
   addTodo() {
