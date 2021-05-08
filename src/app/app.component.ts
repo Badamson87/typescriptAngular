@@ -11,7 +11,7 @@ import {TodoService} from "../../server/services/todo.service";
   providers: []
 })
 export class AppComponent implements OnInit {
-  todos: Todo[] = [{id: 0, checked: false, title: 'Test'}];
+  todos: Todo[] = [];
   public todoForm: any
 
   constructor(public formBuilder: FormBuilder, public router: Router, public activatedRouter: ActivatedRoute,
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoService.getAll().subscribe((result) => {
-      return result;
+    this.todoService.getAll().subscribe((result: any) => {
+      this.todos = result;
     }, (err: Error) => {
       console.log(err);
     });
