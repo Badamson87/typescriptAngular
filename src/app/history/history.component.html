@@ -1,1 +1,12 @@
-<p>history works!</p>
+<section class="todoapp">
+        <div *ngFor="let todo of todos" class="itemRows">
+            <input type="checkbox" [(ngModel)]="todo.hardDelete">
+            <p>{{todo?.title}}</p>
+        </div>
+</section>
+<div class="buttonRow">
+    <button type="button" style="border: 2px; background: antiquewhite" (click)="hardDelete()">Delete</button>
+</div>
+
+
+

@@ -3,4 +3,5 @@ export interface Todo {
     title: string
     checked: boolean
     deleted?: boolean
+    hardDelete?: boolean
 }

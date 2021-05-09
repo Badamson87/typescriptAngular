@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from "../../interfaces/todo";
 import {FormBuilder, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {TodoService} from "../../../server/services/todo.service";
 
 @Component({
@@ -15,9 +14,7 @@ export class TodoComponent implements OnInit {
   public todoForm: any
   state: string = '';
 
-  constructor(public formBuilder: FormBuilder, public router: Router, public activatedRouter: ActivatedRoute,
-              private todoService: TodoService
-  ) {
+  constructor(public formBuilder: FormBuilder, private todoService: TodoService) {
     this.todoForm = this.formBuilder.group({
       'id': [''],
       'title': ['', [Validators.required,]]
