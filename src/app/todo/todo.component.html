@@ -1,0 +1,39 @@
+	<section class="todoapp" ng-controller="todoCtrl">
+		<section class="todoapp">
+					<header class="header">
+						<h1>todos</h1>
+						<form [formGroup]="todoForm" class="todo-form" (ngSubmit)="addTodo()">
+							<input class="new-todo" placeholder="What needs to be done?" formControlName="title" id="title" autofocus>
+						</form>
+					</header>
+					<section class="main" ng-show="todos.length" ng-cloak>
+						<input id="toggle-all" class="toggle-all" type="checkbox" ng-model="allChecked" ng-click="vm.markAll(allChecked)">
+						<label for="toggle-all">Mark all as complete</label>
+						<div *ngFor="let todo of filteredTodos" class="todo-list">
+							<div [className]="{completed: todo.checked}">
+								<div class="view">
+									<input class="toggle" (blur)="updateTodo(todo)" type="checkbox" [(ngModel)]="todo.checked">
+									<input type="text" style="border: none" (blur)="updateTodo(todo)" [(ngModel)]="todo.title" />
+									<button class="destroy" ng-click="vm.removeTodo(todo)"></button>
+								</div>
+							</div>
+						</div>
+					</section>
+					<footer class="footer" ng-show="todos.length" ng-cloak>
+						<span class="todo-count"><strong>{{todos?.length}}</strong>
+						</span>
+						<ul class="filters">
+							<li>
+								<button class="btn btn-primary"  (click)="todoFilter('')">All</button>
+							</li>
+							<li>
+								<button style="margin-right: 30px; margin-left: 30px" class="btn btn-primary" (click)="todoFilter('Active')">Active</button>
+							</li>
+							<li>
+								<button class="btn btn-primary" (click)="todoFilter('Complete')">Completed</button>
+							</li>
+						</ul>
+						<button class="clear-completed" (click)="clearCompleted()" ng-show="doneCount">Clear completed</button>
+					</footer>
+				</section>
+	</section>

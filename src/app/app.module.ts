@@ -8,12 +8,16 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './history/history.component';
 import { TodoService } from "../../server/services/todo.service";
+import { TodoComponent } from './todo/todo.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
     declarations: [
     AppComponent,
-    HistoryComponent
+    HistoryComponent,
+    TodoComponent,
+    AboutComponent
   ],
     imports: [
         BrowserModule,
