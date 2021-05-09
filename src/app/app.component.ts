@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     private todoService: TodoService
   ) {
     this.todoForm = this.formBuilder.group({
+      'id': [''],
       'title': ['', [Validators.required,]]
     })
   }
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  saveTodo(todo: Todo){
+  updateTodo(todo: Todo){
    this.todoService.update(todo)
        .subscribe((result: any) => {
          console.log('success on update')
@@ -42,8 +43,11 @@ export class AppComponent implements OnInit {
   }
 
   addTodo() {
-    this.todoService.create(this.todoForm.value).subscribe((result) => {
-      this.todos.push(this.todoForm.value);
+    let todo: Todo = {checked: false, title: this.todoForm.controls["title"].value}
+    this.todoService.create(todo)
+        .subscribe((result: number) => {
+          todo.id = result
+      this.todos.push(todo);
       this.todoForm.reset();
     }, (err: Error) => {
       console.log(err);
@@ -76,21 +80,21 @@ export class AppComponent implements OnInit {
         return temp;
   }
 
-  clearCompleted(){
+  clearCompleted() {
     let temp: string = "";
     this.todos.forEach((todo, index) => {
-      if(todo.checked) {
+      if (todo.checked) {
         temp += temp.length > 0 ? ',' + todo.id : todo.id;
-      }
-    })
-    this.todoService.delete(temp)
-        .subscribe((results: any) => {
-          this.todos.forEach((todo, index) => {
-            if(todo.checked) this.todos.splice(index, 1);
-          })
+        this.todoService.delete(temp)
+            .subscribe((result: any) => {
+              this.todos.forEach((todo, i) => {
+                if(todo.checked) this.todos.splice(i, 1);
+              })
         }, (err: Error) => {
           console.log(err);
         })
+      }
+    })
   }
 
 }
