@@ -11,6 +11,9 @@ export class TodoService {
     public getAll() {
         return this.http.get('api/todo');
     }
+    public getAllHistory() {
+        return this.http.get('api/todo/history');
+    }
 
     public create(todo: Todo) {
         return this.http.post('api/todo', todo);
@@ -22,6 +25,9 @@ export class TodoService {
 
     public delete(todos: string){
         return this.http.delete('api/todo/?id=' + todos, )
+    }
+    public deleteSoft(todos: string){
+        return this.http.delete('api/todo/soft/?id=' + todos, )
     }
 
 }

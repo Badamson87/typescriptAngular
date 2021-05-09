@@ -85,7 +85,7 @@ export class TodoComponent implements OnInit {
     this.todos.forEach((todo, index) => {
       if (todo.checked) {
         temp += temp.length > 0 ? ',' + todo.id : todo.id;
-        this.todoService.delete(temp)
+        this.todoService.deleteSoft(temp)
             .subscribe((result: any) => {
               this.todos.forEach((todo, i) => {
                 if(todo.checked) this.todos.splice(i, 1);
