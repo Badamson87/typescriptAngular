@@ -44,7 +44,7 @@ export class TodoComponent implements OnInit {
     this.todoService.create(todo)
         .subscribe((result: number) => {
           todo.id = result
-          this.todos.push(todo);
+          this.todos ? this.todos.push(todo) : this.todos = [todo];
           this.todoForm.reset();
           this.todoFilter(this.state);
         }, (err: Error) => {
